@@ -1,5 +1,5 @@
 {
-  "name": "react-animated",
+  "name": "react-animated-css",
   "version": "1.0.0",
   "description": "React component to show or hide elements with animations using [Animated.css](https://daneden.github.io/animate.css/)",
   "main": "lib/index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/digital-flowers/react-animated.git"
+    "url": "git+https://github.com/digital-flowers/react-animated-css.git"
   },
   "keywords": [
     "react",
@@ -20,9 +20,9 @@
   "author": "Fareed Alnamrouti <digital.flowers@hotmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/digital-flowers/react-animated/issues"
+    "url": "https://github.com/digital-flowers/react-animated-css/issues"
   },
-  "homepage": "https://github.com/digital-flowers/react-animated#readme",
+  "homepage": "https://github.com/digital-flowers/react-animated-css#readme",
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",

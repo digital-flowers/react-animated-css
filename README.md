@@ -4,14 +4,20 @@ React component to show or hide elements with animations using [Animated.css](ht
 ## install
 
 ```bash
-npm i react-animated --save
+npm i react-animated-css --save
 ```
 **Note** You have to include [Animated.css](https://daneden.github.io/animate.css/) in your html page, this component is just a wrapper for it.
+
+```html
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+</head>
+```
 
 ## how to use
 very easy to use, just wrap your content with the animated component
 ```javascript
-import {Animated} from "react-animated";
+import {Animated} from "react-animated-css";
 
 <Animated animationIn="bounceInLeft" animationOut="fadeOut" isVisible={true}>
     <div>
