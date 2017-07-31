@@ -1,6 +1,9 @@
 # react-animated
 React component to show or hide elements with animations using [Animated.css](https://daneden.github.io/animate.css/)
 
+## demo
+https://digital-flowers.github.io/react-animated-css.html
+
 ## install
 
 ```bash
@@ -44,8 +47,6 @@ then you can just toggle the  `isVisible` property to see the animation.
 
 ### List of animation
 All the following animation from animated.css are supported.
-
-for demo check the animated.css demo page: https://daneden.github.io/animate.css/
 
 | ﻿Animation Name |
 |--------------------|
