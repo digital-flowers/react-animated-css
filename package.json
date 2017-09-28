@@ -2,7 +2,8 @@
   "name": "react-animated-css",
   "version": "1.0.2",
   "description": "React component to show or hide elements with animations using [Animated.css](https://daneden.github.io/animate.css/)",
-  "main": "lib/index.js",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "scripts": {
     "compile": "babel -d lib/ src/",
     "prepublish": "npm run compile"
