@@ -82,7 +82,7 @@ declare module "react-animated-css" {
     | "slideOutRight"
     | "slideOutUp";
 
-  export class Animated extends React.Component<AnimatedProps> {
+  export class Animated extends Component<AnimatedProps> {
   }
 
   export interface AnimatedProps {
@@ -122,7 +122,7 @@ declare module "react-animated-css" {
      */
     isVisible: boolean;
 
-    innerRef?: React.Ref<Animated>;
+    innerRef?: Ref<Animated>;
 
     /**
      * Additional class name.
