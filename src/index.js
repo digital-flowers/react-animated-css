@@ -22,16 +22,17 @@ export class Animated extends React.Component {
   constructor(props) {
     super(props);
     this.state = props.animateOnMount ? {
-      animation: props.isVisible ? props.animationIn : props.animationOut
+      animation: props.isVisible ? props.animationIn : props.animationOut,
+      delay: props.isVisible ? props.animationInDelay : props.animationOutDelay
     } : {};
   }
 
   componentWillReceiveProps(nextProps) {
     const {isVisible} = nextProps;
     if (isVisible !== this.props.isVisible) {
-      const {animationIn, animationOut} = this.props;
+      const {animationIn, animationOut, animationInDelay, animationOutDelay} = this.props;
       clearTimeout(this.timeoutId);
-      this.setState({animation: isVisible ? animationIn : animationOut});
+      this.setState({animation: isVisible ? animationIn : animationOut, delay: isVisible ? animationInDelay : animationOutDelay});
     }
   }
 
@@ -41,13 +42,23 @@ export class Animated extends React.Component {
 
   render() {
     const {children, animationInDelay, animationOutDelay, style, isVisible, innerRef, className} = this.props;
-    const {animation} = this.state;
+    const {animation, delay} = this.state;
     const classes = classNames("animated", animation, className);
     if (isLteIE9() || !animation) {
       style.opacity = isVisible ? 1 : 0;
     }
     return (
       <div className={classes} ref={innerRef} style={{
+        animationDelay: `${delay}s`,
+        pointerEvents: isVisible ? "all" : "none",
+        ...style
+      }}>
+        {children}
+      </div>
+    );
+  }
+}
+
         animationDelay: `${isVisible ? animationInDelay : animationOutDelay}s`,
         pointerEvents: isVisible ? "all" : "none",
         ...style
