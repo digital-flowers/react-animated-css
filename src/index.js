@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { number, string, object, bool, func } from "prop-types";
 import classNames from "classnames";
 
 /**
@@ -9,7 +9,9 @@ import classNames from "classnames";
 const isLteIE9 = () => {
   const ua = window.navigator.userAgent;
   const ie = ua.indexOf("MSIE ");
-  return ie > -1 && parseInt(ua.substring(ie + 5, ua.indexOf(".", ie))) <= 9;
+  return (
+    ie > -1 && parseInt(ua.substring(ie + 5, ua.indexOf(".", ie)), 10) <= 9
+  );
 };
 
 /**
@@ -17,52 +19,54 @@ const isLteIE9 = () => {
  * @type {Object}
  */
 export class Animated extends React.Component {
-  timeoutId;
-
   constructor(props) {
     super(props);
-    this.state = props.animateOnMount ? {
-      animation: props.isVisible ? props.animationIn : props.animationOut,
-      delay: props.isVisible ? props.animationInDelay : props.animationOutDelay
-    } : {};
+    this.state = props.animateOnMount
+      ? {
+          animation: props.isVisible ? props.animationIn : props.animationOut,
+          delay: props.isVisible
+            ? props.animationInDelay
+            : props.animationOutDelay
+        }
+      : {};
   }
 
   componentWillReceiveProps(nextProps) {
-    const {isVisible} = nextProps;
+    const { isVisible } = nextProps;
     if (isVisible !== this.props.isVisible) {
-      const {animationIn, animationOut, animationInDelay, animationOutDelay} = this.props;
-      clearTimeout(this.timeoutId);
-      this.setState({animation: isVisible ? animationIn : animationOut, delay: isVisible ? animationInDelay : animationOutDelay});
+      const {
+        animationIn,
+        animationOut,
+        animationInDelay,
+        animationOutDelay
+      } = this.props;
+      this.setState({
+        animation: isVisible ? animationIn : animationOut,
+        delay: isVisible ? animationInDelay : animationOutDelay
+      });
     }
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this.timeoutId);
   }
 
   render() {
-    const {children, animationInDelay, animationOutDelay, style, isVisible, innerRef, className} = this.props;
-    const {animation, delay} = this.state;
+    const { children, style, isVisible, innerRef, className } = this.props;
+    const { animation, delay } = this.state;
+
     const classes = classNames("animated", animation, className);
+
     if (isLteIE9() || !animation) {
       style.opacity = isVisible ? 1 : 0;
     }
-    return (
-      <div className={classes} ref={innerRef} style={{
-        animationDelay: `${delay}s`,
-        pointerEvents: isVisible ? "all" : "none",
-        ...style
-      }}>
-        {children}
-      </div>
-    );
-  }
-}
 
-        animationDelay: `${isVisible ? animationInDelay : animationOutDelay}s`,
-        pointerEvents: isVisible ? "all" : "none",
-        ...style
-      }}>
+    return (
+      <div
+        className={classes}
+        ref={innerRef}
+        style={{
+          animationDelay: `${delay}s`,
+          pointerEvents: isVisible ? "all" : "none",
+          ...style
+        }}
+      >
         {children}
       </div>
     );
@@ -70,15 +74,15 @@ export class Animated extends React.Component {
 }
 
 Animated.propTypes = {
-  animationIn: PropTypes.string,
-  animationOut: PropTypes.string,
-  animationInDelay: PropTypes.number,
-  animationOutDelay: PropTypes.number,
-  style: PropTypes.object,
-  isVisible: PropTypes.bool,
-  innerRef: PropTypes.func,
-  className: PropTypes.string,
-  animateOnMount: PropTypes.bool
+  start: string,
+  finish: string,
+  enter: number,
+  exit: number,
+  style: object,
+  animate: bool,
+  innerRef: func,
+  className: string,
+  animateOnMount: bool
 };
 
 Animated.defaultProps = {
