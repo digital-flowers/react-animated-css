@@ -5,7 +5,7 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "compile": "babel -d lib/ src/",
+    "compile": "babel -d lib/ src/ --no-comments",
     "prepublish": "npm run compile"
   },
   "repository": {
@@ -19,6 +19,9 @@
     "animated.css"
   ],
   "author": "Fareed Alnamrouti <digital.flowers@hotmail.com>",
+  "contributors": [
+    "Noam Gabriel Jacobson <noam.jacobson@gmail.com> (https://github.com/JaysQubeXon)"
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/digital-flowers/react-animated-css/issues"
