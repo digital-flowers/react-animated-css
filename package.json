@@ -19,6 +19,9 @@
     "animated.css"
   ],
   "author": "Fareed Alnamrouti <digital.flowers@hotmail.com>",
+  "contributors": [
+    "Noam Gabriel Jacobson <noam.jacobson@gmail.com> (https://github.com/JaysQubeXon)"
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/digital-flowers/react-animated-css/issues"
