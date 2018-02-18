@@ -74,12 +74,12 @@ export class Animated extends React.Component {
 }
 
 Animated.propTypes = {
-  start: string,
-  finish: string,
-  enter: number,
-  exit: number,
+  animationIn: string,
+  animationOut: string,
+  animationInDelay: number,
+  animationOutDelay: number,
   style: object,
-  animate: bool,
+  isVisible: bool,
   innerRef: func,
   className: string,
   animateOnMount: bool
