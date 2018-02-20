@@ -1,13 +1,14 @@
 import React from "react";
-import { number, string, object, bool, func } from "prop-types";
 import classNames from "classnames";
+import {isBrowser} from "browser-or-node";
+import {bool, func, number, object, string} from "prop-types";
 
 /**
  * check if IE is <= 9
  * @return {boolean}
  */
 const isLteIE9 = () => {
-  const ua = window.navigator.userAgent;
+  const ua = isBrowser ? window.navigator.userAgent : "";
   const ie = ua.indexOf("MSIE ");
   return (
     ie > -1 && parseInt(ua.substring(ie + 5, ua.indexOf(".", ie)), 10) <= 9
@@ -83,16 +84,16 @@ export class Animated extends React.Component {
     super(props);
     this.state = props.animateOnMount
       ? {
-          animation: props.isVisible ? props.animationIn : props.animationOut,
-          delay: props.isVisible
-            ? props.animationInDelay
-            : props.animationOutDelay
-        }
+        animation: props.isVisible ? props.animationIn : props.animationOut,
+        delay: props.isVisible
+          ? props.animationInDelay
+          : props.animationOutDelay
+      }
       : {};
   }
 
   componentWillReceiveProps(nextProps) {
-    const { isVisible } = nextProps;
+    const {isVisible} = nextProps;
     if (isVisible !== this.props.isVisible) {
       const {
         animationIn,
@@ -108,8 +109,8 @@ export class Animated extends React.Component {
   }
 
   render() {
-    const { children, style, isVisible, innerRef, className } = this.props;
-    const { animation, delay } = this.state;
+    const {children, style, isVisible, innerRef, className} = this.props;
+    const {animation, delay} = this.state;
 
     const classes = classNames("animated", animation, className);
 
