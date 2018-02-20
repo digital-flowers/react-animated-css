@@ -1,6 +1,6 @@
 {
   "name": "react-animated-css",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React component to show or hide elements with animations using [Animated.css](https://daneden.github.io/animate.css/)",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -20,7 +20,9 @@
   ],
   "author": "Fareed Alnamrouti <digital.flowers@hotmail.com>",
   "contributors": [
-    "Noam Gabriel Jacobson <noam.jacobson@gmail.com> (https://github.com/JaysQubeXon)"
+    "Noam Gabriel Jacobson <noam.jacobson@gmail.com> (https://github.com/JaysQubeXon)",
+    "Mohamed Feddad <mrf345@gmail.com> (https://github.com/mrf345)",
+    "Manu (https://github.com/manu-st)"
   ],
   "license": "ISC",
   "bugs": {
