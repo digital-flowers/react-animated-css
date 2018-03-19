@@ -134,6 +134,8 @@ export class Animated extends React.Component {
   }
 }
 
+Animated.deplayName = "Animated";
+
 Animated.propTypes = {
   animationIn: string,
   animationOut: string,
