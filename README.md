@@ -1,6 +1,9 @@
 # react-animate-css
 React component to show or hide elements with animations using [Animated.css](https://daneden.github.io/animate.css/)
 
+[![npm version](https://img.shields.io/npm/v/react-animated-css.svg?style=flat-square)](https://www.npmjs.com/package/react-animated-css)
+[![npm downloads](https://img.shields.io/npm/dt/react-animated-css.svg?style=flat-square)](https://www.npmjs.com/package/react-animated-css)
+
 ## demo
 https://digital-flowers.github.io/react-animated-css.html
 
