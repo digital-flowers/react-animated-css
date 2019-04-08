@@ -1,6 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 import {isBrowser} from "browser-or-node";
+import prefix from "react-prefixer";
 import {bool, func, number, object, string} from "prop-types";
 
 /**
@@ -36,6 +37,16 @@ const isLteIE9 = (() => {
  * Defines the animationDelay attribute in ms for the animationOut animation.
  * since 1.0.2
  * [optional]: defaults to 0
+ *
+ * @prop {number} animationInDuration
+ * Defines the animationDuration attribute in ms for the animationIn animation.
+ * since 1.0.5
+ * [optional]: defaults to 1000
+ *
+ * @prop {number} animationOutDuration
+ * Defines the animationDuration attribute in ms for the animationOut animation.
+ * since 1.0.5
+ * [optional]: defaults to 1000
  *
  * @prop {object} style
  * Pass down to Reacts` style attribute for custom component styling.
@@ -76,40 +87,63 @@ const isLteIE9 = (() => {
  * and alternates between the two when @prop {boolean }isVisible is toggled.
  * since 1.0.2
  *
+ * @state {boolean} duration
+ * This state prop is defined by animationInDuration and animationOutDuration
+ * and alternates between the two when @prop {boolean }isVisible is toggled.
+ * since 1.0.5
+ *
  * @type {Object}
  */
 export class Animated extends React.Component {
   constructor(props) {
     super(props);
-    this.state = props.animateOnMount
-      ? {
-        animation: props.isVisible ? props.animationIn : props.animationOut,
-        delay: props.isVisible
-          ? props.animationInDelay
-          : props.animationOutDelay
-      }
-      : {};
+    this.state = props.animateOnMount ? this.getNewState(props) : {};
   }
 
   componentWillReceiveProps(nextProps) {
-    const {isVisible} = nextProps;
-    if (isVisible !== this.props.isVisible) {
-      const {
-        animationIn,
-        animationOut,
-        animationInDelay,
-        animationOutDelay
-      } = this.props;
-      this.setState({
-        animation: isVisible ? animationIn : animationOut,
-        delay: isVisible ? animationInDelay : animationOutDelay
-      });
+    const {
+      isVisible,
+      animationIn,
+      animationOut,
+      animationInDelay,
+      animationOutDelay,
+      animationInDuration,
+      animationOutDuration
+    } = this.props;
+    if (
+      isVisible !== nextProps.isVisible ||
+      animationIn !== nextProps.animationIn ||
+      animationOut !== nextProps.animationOut ||
+      animationInDelay !== nextProps.animationInDelay ||
+      animationOutDelay !== nextProps.animationOutDelay ||
+      animationInDuration !== nextProps.animationInDuration ||
+      animationOutDuration !== nextProps.animationOutDuration
+    ) {
+      this.setState(this.getNewState(nextProps));
     }
   }
 
+  getNewState = ({
+                   isVisible,
+                   animationIn,
+                   animationOut,
+                   animationInDuration,
+                   animationOutDuration,
+                   animationInDelay,
+                   animationOutDelay
+                 }) => isVisible ? ({
+    animation: animationIn,
+    duration: animationInDuration,
+    delay: animationInDelay
+  }) : ({
+    animation: animationOut,
+    duration: animationOutDuration,
+    delay: animationOutDelay
+  });
+
   render() {
     const {children, style, isVisible, innerRef, className} = this.props;
-    const {animation, delay} = this.state;
+    const {animation, delay, duration} = this.state;
 
     const classes = classNames("animated", animation, className);
 
@@ -118,15 +152,14 @@ export class Animated extends React.Component {
     }
 
     return (
-      <div
-        className={classes}
-        ref={innerRef}
-        style={{
-          animationDelay: `${delay}ms`,
-          pointerEvents: isVisible ? "all" : "none",
-          ...style
-        }}
-      >
+      <div className={classes}
+           ref={innerRef}
+           style={prefix({
+             animationDelay: `${delay}ms`,
+             animationDuration: `${duration}ms`,
+             pointerEvents: isVisible ? "all" : "none",
+             ...style
+           })}>
         {children}
       </div>
     );
@@ -136,24 +169,28 @@ export class Animated extends React.Component {
 Animated.displayName = "Animated";
 
 Animated.propTypes = {
+  animateOnMount: bool,
+  isVisible: bool,
   animationIn: string,
   animationOut: string,
   animationInDelay: number,
   animationOutDelay: number,
-  style: object,
-  isVisible: bool,
-  innerRef: func,
+  animationInDuration: number,
+  animationOutDuration: number,
   className: string,
-  animateOnMount: bool
+  style: object,
+  innerRef: func
 };
 
 Animated.defaultProps = {
+  animateOnMount: true,
+  isVisible: true,
   animationIn: "fadeIn",
   animationOut: "fadeOut",
-  className: "",
   animationInDelay: 0,
   animationOutDelay: 0,
-  isVisible: true,
-  style: {},
-  animateOnMount: true
+  animationInDuration: 1000,
+  animationOutDuration: 1000,
+  className: "",
+  style: {}
 };
