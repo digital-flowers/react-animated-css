@@ -4,16 +4,15 @@ import {isBrowser} from "browser-or-node";
 import {bool, func, number, object, string} from "prop-types";
 
 /**
- * check if IE is <= 9
- * @return {boolean}
+ * if IE is <= 9
  */
-const isLteIE9 = () => {
+const isLteIE9 = (() => {
   const ua = isBrowser ? window.navigator.userAgent : "";
   const ie = ua.indexOf("MSIE ");
   return (
     ie > -1 && parseInt(ua.substring(ie + 5, ua.indexOf(".", ie)), 10) <= 9
   );
-};
+})();
 
 /**
  * animated text typing
@@ -114,7 +113,7 @@ export class Animated extends React.Component {
 
     const classes = classNames("animated", animation, className);
 
-    if (isLteIE9() || !animation) {
+    if (isLteIE9 || !animation) {
       style.opacity = isVisible ? 1 : 0;
     }
 
