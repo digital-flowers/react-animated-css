@@ -101,25 +101,9 @@ export class Animated extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const {
-      isVisible,
-      animationIn,
-      animationOut,
-      animationInDelay,
-      animationOutDelay,
-      animationInDuration,
-      animationOutDuration
-    } = this.props;
-    if (
-      isVisible !== nextProps.isVisible ||
-      animationIn !== nextProps.animationIn ||
-      animationOut !== nextProps.animationOut ||
-      animationInDelay !== nextProps.animationInDelay ||
-      animationOutDelay !== nextProps.animationOutDelay ||
-      animationInDuration !== nextProps.animationInDuration ||
-      animationOutDuration !== nextProps.animationOutDuration
-    ) {
-      this.setState(this.getNewState(nextProps));
+    const {isVisible} = this.props;
+    if (isVisible !== nextProps.isVisible) {
+      this.setState(this.getNewState({...this.props, ...nextProps}));
     }
   }
 
