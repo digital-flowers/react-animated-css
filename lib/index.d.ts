@@ -99,16 +99,28 @@ declare module "react-animated-css" {
     animationOut: AnimationString;
 
     /**
-     * The animation delay.
+     * The animation-in delay.
      * @default 0
      */
     animationInDelay?: number;
 
     /**
-     * The animation delay.
+     * The animation-out delay.
      * @default 0
      */
     animationOutDelay?: number;
+
+    /**
+     * The animation-in duration.
+     * @default 1000
+     */
+    animationInDuration?: number;
+
+    /**
+     * The animation-out duration.
+     * @default 1000
+     */
+    animationOutDuration?: number;
 
     /**
      * Additional CSS styling.
