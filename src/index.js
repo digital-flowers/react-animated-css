@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 import {isBrowser} from "browser-or-node";
-import prefix from "react-prefixer";
+import prefix from "./prefixer";
 import {bool, func, number, object, string} from "prop-types";
 
 /**
