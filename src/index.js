@@ -131,9 +131,10 @@ export class Animated extends React.Component {
 
     const classes = classNames("animated", animation, className);
 
-    if (isLteIE9 || !animation) {
-      style.opacity = isVisible ? 1 : 0;
-    }
+    const backwardStyle = isLteIE9 || !animation ? {
+      opacity: isVisible ? 1 : 0,
+      transition: `opacity ${delay}ms`,
+    } : {};
 
     return (
       <div className={classes}
@@ -142,6 +143,7 @@ export class Animated extends React.Component {
              animationDelay: `${delay}ms`,
              animationDuration: `${duration}ms`,
              pointerEvents: isVisible ? "all" : "none",
+             ...backwardStyle,
              ...style
            })}>
         {children}

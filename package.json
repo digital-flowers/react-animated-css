@@ -1,6 +1,6 @@
 {
   "name": "react-animated-css",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "React component to show or hide elements with animations using [Animated.css](https://daneden.github.io/animate.css/)",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
