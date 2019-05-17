@@ -143,8 +143,8 @@ export class Animated extends React.Component {
              animationDelay: `${delay}ms`,
              animationDuration: `${duration}ms`,
              pointerEvents: isVisible ? "all" : "none",
-             ...backwardStyle,
-             ...style
+             ...style,
+             ...backwardStyle
            })}>
         {children}
       </div>
