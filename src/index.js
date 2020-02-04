@@ -104,12 +104,12 @@ export class Animated extends React.Component {
     const { isVisible: nextIsVisible } = nextProps
     const { isVisible: prevIsVisible } = prevState
     if (nextIsVisible !== prevIsVisible) {
-      return this.getNewState({...this.props, ...nextProps});
+      return this.getNewState({...prevState, ...nextProps});
     }
     return {}
   }
 
-  getNewState = ({
+  static getNewState = ({
                    isVisible,
                    animationIn,
                    animationOut,
