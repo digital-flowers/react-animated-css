@@ -39,10 +39,10 @@ then you can just toggle the  `isVisible` property to see the animation.
 
 - **animationIn** animation in name, default "fadeIn"
 - **animationOut** animation out name, default "fadeOut"
-- **animationInDelay** animation in delay, default 0
-- **animationOutDelay** animation out delay, default 0
-- **animationInDuration** animation in delay, default 1000
-- **animationOutDuration** animation out delay, default 1000
+- **animationInDelay** animation in delay (miliseconds), default 0
+- **animationOutDelay** animation out delay (miliseconds), default 0
+- **animationInDuration** animation in duration (miliseconds), default 1000
+- **animationOutDuration** animation out duration (miliseconds), default 1000
 - **style** react style property for the inner component
 - **isVisible** if the component is visible or not, default true
 - **innerRef** react ref property for the inner component
