@@ -21,12 +21,12 @@ const isLteIE9 = (() => {
  * @prop {string} animationIn
  * Defines the animation to be used as the appearing animation.
  * @since 1.0.0
- * [required]: defaults to "fadeIn"
+ * [optional]: defaults to "fadeIn"
  *
  * @prop {string} animationOut
  * Defines the animation to be used as the disappearing animation.
  * @since 1.0.0
- * [required]: defaults to "fadeOut"
+ * [optional]: defaults to "fadeOut"
  *
  * @prop {number} animationInDelay
  * Defines the animationDelay attribute in ms for the animationIn animation.

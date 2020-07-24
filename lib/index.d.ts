@@ -90,13 +90,13 @@ declare module "react-animated-css" {
      * The animation-in style.
      * @default "fadeIn"
      */
-    animationIn: AnimationString;
+    animationIn?: AnimationString;
 
     /**
      * The animation-out style.
      * @default "fadeOut"
      */
-    animationOut: AnimationString;
+    animationOut?: AnimationString;
 
     /**
      * The animation-in delay.
