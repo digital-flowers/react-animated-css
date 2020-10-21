@@ -132,5 +132,8 @@ All the following animation from animated.css are supported.
 | `slideOutRight` |
 | `slideOutUp` |
 
+## Give a try
+ Its 100% smoothly and it looks really nice in some components
+
 ## note:
 From React 17.x.x [componentWillReceiveProps](https://medium.com/@baphemot/whats-new-in-react-16-3-d2c9b7b6193b#dd16) will be deprecated and a different strategy is introduced.
