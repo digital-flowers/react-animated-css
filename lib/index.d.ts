@@ -11,6 +11,7 @@ declare module "react-animated-css" {
     | "rubberBand"
     | "shake"
     | "headShake"
+    | "heartBeat"
     | "swing"
     | "tada"
     | "wobble"
