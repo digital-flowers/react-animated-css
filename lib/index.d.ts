@@ -147,5 +147,10 @@ declare module "react-animated-css" {
      * @default true
      */
     animateOnMount?: boolean;
+
+    /**
+     * React children
+     */
+    children?: ReactNode;
   }
 }
